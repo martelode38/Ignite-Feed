@@ -1,0 +1,10 @@
+.wrapper{
+    max-width: 70rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+
+    display: grid;
+    grid-template-columns: 256px 1fr; /*esse 1fr diz que a unidade vai ter um tamanho flexivel*/
+    gap: 2rem;
+    align-items: flex-start;
+}

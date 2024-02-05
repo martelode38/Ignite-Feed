@@ -1,0 +1,14 @@
+.post {
+    background: var(--gray-800);
+    border-radius: 8px;
+    padding: 2.5rem;
+}
+
+.post + .post {
+    margin-top: 2rem;
+    /*essa tecnica usando o sinal de + ela estiliza TODO post que contem um post antes dele*/
+}
+
+.content {
+    line-height: 1.6;
+}

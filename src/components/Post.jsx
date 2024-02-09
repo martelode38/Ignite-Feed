@@ -13,15 +13,30 @@ export function Post(){
                 </div>
 
                 <time title="05 de janeiro as 01:53" dateTime="2024-02-05 01:53:40">
-
+                    Publicado há 1h
                 </time>
             </header>
             
             <div className={styles.content}>
-                <p> oi eu sou o martenier</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam facilis nesciunt a quos expedita porro eveniet deleniti explicabo sunt officia non nihil cupiditate asperiores perferendis, error quidem molestiae eius quasi?</p>
+                <p>GABRIEL BARBOSA AKA GABIGOL</p>
+                <p>RESPEITEM! Respeitem a história do maior camisa 10 do Brasil amigos!</p>
+                <p>
+                    <a href="">#gabigol</a>{' '}
+                    <a href="">#gabigol</a>{' '}
+                    <a href="">#gabigol</a>
+                </p>
             </div>
             
+            <form className={styles.commentForm}>
+                <strong>Deixe seu feedback</strong>
+
+                <textarea placeholder="Deixe um comentário"/>
+
+                <footer>
+                <button type="submit">Comentar</button>
+                </footer>
+            </form>
+
         </article>
     )
 }

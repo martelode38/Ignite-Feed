@@ -1,32 +1,46 @@
+import { format, formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR'
+
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
-export function Post(){
+//author: {avatarURL, name, role}
+//publishedAt: date
+//content: string
+
+export function Post(props){
+    
+    const publishedDateFormatted = format(props.publishedAt, "d 'de' LLLL 'às' HH:mm'h'",{
+        locale: ptBR
+    })
+    const publishedDateRelativeToNow = formatDistanceToNow(props.publishedAt,{
+        locale: ptBR
+    })
     return(
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <Avatar src="https://pbs.twimg.com/profile_images/1756553394955620352/kQ51lzCK_400x400.jpg" alt="avatar" />
+                    <Avatar src={props.author.avatar} alt="avatar" />
                     <div className={styles.authorInfo}>
-                        <strong>Martenisss</strong>
-                        <span>metedor de gols</span>
+                        <strong>{props.author.name}</strong>
+                        <span>{props.author.role}</span>
                     </div>
                 </div>
 
-                <time title="05 de janeiro as 01:53" dateTime="2024-02-05 01:53:40">
-                    Publicado há 1h
+                <time title={publishedDateFormatted} dateTime={props.publishedAt.toISOString()}>
+                    {publishedDateRelativeToNow}
                 </time>
             </header>
             
             <div className={styles.content}>
-                <p>GABRIEL BARBOSA AKA GABIGOL</p>
-                <p>RESPEITEM! Respeitem a história do maior camisa 10 do Brasil amigos!</p>
-                <p>
-                    <a href="">#gabigol</a>{' '}
-                    <a href="">#gabigol</a>{' '}
-                    <a href="">#gabigol</a>
-                </p>
+                {props.content.map(line =>{
+                    if(line.type === 'paragraph'){
+                        return<p>{line.content}</p>
+                    }else if(line.type === 'link'){
+                        return<p><a href='#'>{line.content}</a></p>
+                    }
+                })}
             </div>
             
             <form className={styles.commentForm}>

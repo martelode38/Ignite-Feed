@@ -5,7 +5,11 @@ import { Avatar } from './Avatar';
 
 export function Comment(props){
 
-    
+    function handleDeleteComent(){
+        console.log("deletar");
+        props.deleteComment(props.content);
+    }
+
     return(
         <div className={styles.comment}>
             <Avatar hasBorder = {false} src="https://pbs.twimg.com/profile_images/1756553394955620352/kQ51lzCK_400x400.jpg"/>
@@ -20,7 +24,8 @@ export function Comment(props){
                             </time>
                         </div>
 
-                        <button title="Deletar comentário">
+                        <button onClick={handleDeleteComent} 
+                        title="Deletar comentário">
                             <Trash size={24}/>
                         </button>
                     </header>

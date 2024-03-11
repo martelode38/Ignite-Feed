@@ -37,6 +37,7 @@ export function Post(props){
     }
 
     function handleNewCommentChange(){
+        event.target.setCustomValidity('');
         setNewCommentText(event.target.value);
     }
 
@@ -46,6 +47,10 @@ export function Post(props){
         })
         //imutabilidade -> as variaveis sao sofrem mutação,  mas criamos um novo vvalor( um novo espaço de memoria)
         setComments(commentsWithoutDeleteOne);
+    }
+
+    function handleNewCommentInvalid(){
+        event.target.setCustomValidity('Esse campo é obrigatório!');
     }
 
     return(
@@ -82,10 +87,14 @@ export function Post(props){
                 placeholder="Deixe um comentário" 
                 value={newCommentText}
                 onChange={handleNewCommentChange}
+                onInvalid={handleNewCommentInvalid}
+                required={true}
                 />
 
                 <footer>
-                <button type="submit">Comentar</button>
+                <button type="submit" disabled={newCommentText.length == 0}>
+                    Comentar
+                    </button>
                 </footer>
             </form>
 
